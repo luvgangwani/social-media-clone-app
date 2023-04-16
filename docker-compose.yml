@@ -1,0 +1,46 @@
+version: '3.8'
+
+networks:
+  smca-network:
+    driver: bridge
+
+services:
+  smca-backend:
+    build: ./server
+    ports:
+      - '5122:5122'
+    container_name: smca-backend-container
+    volumes:
+      - ./server:/app/server
+      - /app/server/node_modules
+    depends_on:
+      - smca-mysql
+    networks:
+      - smca-network
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_HOST=${BACKEND_MYSQL_DOCKER_HOST}
+      - MYSQL_ROOT_USERNAME=${MYSQL_ROOT_USERNAME}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PORT=${MYSQL_PORT}
+    stdin_open: true
+    tty: true
+ 
+  smca-mysql:
+    image: mysql:8.0.32
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - '3306:3306'
+    container_name: smca-mysql-container
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - SERVICE_NAME=smca-mysql
+    networks:
+      - smca-network
+    volumes:
+      - $HOME/database:/var/lib/mysql
+    expose:
+      - 3306
