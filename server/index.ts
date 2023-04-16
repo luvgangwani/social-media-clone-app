@@ -1,36 +1,22 @@
 import express, { Request, Response} from 'express';
-import mysql from 'mysql2';
 import dotenv from 'dotenv';
 import AppConfig from './app-config';
+import posts from './api/v1/posts';
+import users from './api/v1/users';
 
 const { PORT } = AppConfig;
 
 const app = express();
 
+app.use('/api/v1/posts', posts);
+app.use('/api/v1/users', users);
+
 dotenv.config();
 
 app.get('/', (_req: Request, res: Response) => {
-    const connection = mysql.createConnection({
-        host: process.env.MYSQL_HOST,
-        user: process.env.MYSQL_ROOT_USERNAME,
-        password: process.env.MYSQL_ROOT_PASSWORD,
-        database: process.env.MYSQL_DATABASE,
-        port: Number(process.env.MYSQL_PORT),
+    res.status(200).json({
+        message: 'Hello, World!',
     });
-
-    connection.connect();
-
-    connection.query(`select * from vw_feed`, (_error, _result, _fields) => {
-        if (_error) res.json({
-            error: _error
-        });
-
-        if (_result) res.json({
-            data: _result,
-        })
-    });
-
-    connection.end();
 });
 
 app.listen(PORT, () => {
