@@ -8,6 +8,8 @@ const { PORT } = AppConfig;
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/api/v1/posts', posts);
 app.use('/api/v1/users', users);
 
