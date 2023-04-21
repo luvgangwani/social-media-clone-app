@@ -20,6 +20,19 @@ class UsersService {
             );
         });
     }
+
+    getUserByUsername(username: string) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from vw_users where username=?;`,
+                [username],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(JSON.parse(JSON.stringify(results))[0]);
+                }
+            );
+        });
+    }
 }
 
 export default UsersService;

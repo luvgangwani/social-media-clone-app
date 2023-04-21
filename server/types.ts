@@ -4,7 +4,7 @@ export type Users = {
     firstName: string,
     lastName: string,
     username: string,
-    password: string,
+    password?: string,
     status: Status,
     created?: string,
     updated?: string,
