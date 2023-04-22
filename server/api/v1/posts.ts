@@ -1,8 +1,9 @@
 import express from 'express';
+import validateToken from '../../middleware/auth';
 
 const api = express.Router();
 
-api.get('/', (_req, res) => {
+api.get('/', validateToken, (_req, res) => {
     res.status(200).json({
         message: 'all posts'
     });

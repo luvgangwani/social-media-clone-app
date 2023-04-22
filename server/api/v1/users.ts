@@ -68,10 +68,4 @@ api.post('/login', (req, res) => {
     })
 });
 
-api.get('/', (_req, res) => {
-    res.status(200).json({
-        message: 'all users'
-    });
-})
-
 export default api;
