@@ -1,4 +1,5 @@
 import pool from "../db";
+import { Status } from "../enum";
 import { Users } from "../types";
 
 class UsersService {
@@ -55,6 +56,22 @@ class UsersService {
                 }
             )
         });
+    }
+
+    deleteUser(username: string) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `update users set status=? where username=?`,
+                [
+                    Status.DELETED,
+                    username,
+                ],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(results)
+                }
+            )
+        })
     }
 }
 

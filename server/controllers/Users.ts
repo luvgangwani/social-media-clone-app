@@ -41,6 +41,16 @@ class UsersController {
             throw new Error(error)
         })
     }
+
+    deleteUser(username: string) {
+        return this
+        .usersService
+        .deleteUser(username)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error)
+        });
+    }
 }
 
 export default UsersController;

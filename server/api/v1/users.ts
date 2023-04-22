@@ -23,7 +23,7 @@ api.post('/register', (req, res) => {
     .catch((error) => {
         res.status(500).json({
             success: 0,
-            message: 'Error registering user.',
+            message: 'Error registering user!',
             error: error.message,
         })
     })
@@ -87,9 +87,28 @@ api.put('/', validateToken, (req, res) => {
     .catch(error => {
         res.status(500).json({
             success: 0,
-            message: 'Error updating user information.',
+            message: 'Error updating user information!',
             error: error.message,
         })
+    })
+});
+
+api.delete('/', validateToken, (req, res) => {
+    usersController
+    .deleteUser(req.body.username)
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'User deleted!',
+            data,
+        })
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Error deleting user information!',
+            error: error.message,
+        });
     })
 });
 
