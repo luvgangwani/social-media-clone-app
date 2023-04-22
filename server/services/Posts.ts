@@ -1,4 +1,5 @@
 import pool from "../db";
+import { Status } from "../enum";
 import { Posts } from "../types";
 
 class PostsService {
@@ -41,6 +42,22 @@ class PostsService {
                 (error, results, _fields) => {
                     if (error) reject(error);
                     if (results) resolve(results);
+                }
+            )
+        });
+    }
+
+    deletePost(id: Number) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `update posts set status=? where id=?`,
+                [
+                    Status.DELETED,
+                    id,
+                ],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(results)
                 }
             )
         });

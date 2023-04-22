@@ -20,7 +20,7 @@ class PostsController {
         .getPostsByUsername(username)
         .then(data => data)
         .catch(error => {
-            throw new Error(error)
+            throw new Error(error);
         });
     }
 
@@ -30,7 +30,17 @@ class PostsController {
         .update(post)
         .then(data => data)
         .catch(error => {
-            throw new Error(error)
+            throw new Error(error);
+        })
+    }
+
+    deletePost(id: Number) {
+        return this
+        .postsService
+        .deletePost(id)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error);
         })
     }
 }
