@@ -3,6 +3,7 @@ import UsersController from '../../controllers/Users';
 import { Secret, sign } from 'jsonwebtoken';
 import { Users } from '../../types';
 import { compareSync } from 'bcrypt';
+import validateToken from '../../middleware/auth';
 
 const api = express.Router();
 
@@ -65,6 +66,30 @@ api.post('/login', (req, res) => {
             message: 'Unexpected error logging in!',
             error: error.message,
         });
+    })
+});
+
+api.put('/', validateToken, (req, res) => {
+    usersController
+    .update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        status: req.body.status
+    })
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'User information updated successfully!',
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Error updating user information.',
+            error: error.message,
+        })
     })
 });
 

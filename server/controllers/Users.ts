@@ -31,6 +31,16 @@ class UsersController {
             throw new Error(error)
         })
     }
+
+    update(user: Users) {
+        return this
+        .usersService
+        .update(user)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error)
+        })
+    }
 }
 
 export default UsersController;

@@ -37,6 +37,25 @@ class UsersService {
             );
         });
     }
+
+    update(user: Users) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `update users set first_name=?, last_name=?, username=?, status=? where username=?;`,
+                [
+                    user.firstName,
+                    user.lastName,
+                    user.username,
+                    user.status,
+                    user.username,
+                ],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(results);
+                }
+            )
+        });
+    }
 }
 
 export default UsersService;
