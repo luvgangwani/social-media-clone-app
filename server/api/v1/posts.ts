@@ -7,10 +7,25 @@ const api = express.Router();
 
 const postsController = new PostsController();
 
-api.get('/', validateToken, (_req, res) => {
-    res.status(200).json({
-        message: 'all posts'
-    });
+api.get('/', validateToken, (req, res) => {
+    const { username } = req.body.authUser;
+    
+    postsController
+    .getPostsByUsername(username)
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'Posts fetched!',
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while fetching posts. Please try again!',
+            error: error.message,
+        });
+    })
 });
 
 api.post('/', validateToken, (req, res) => {

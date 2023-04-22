@@ -39,7 +39,7 @@ api.post('/login', (req, res) => {
             if (comparisonResult) {
                 // delete the password as it's not supposed to be a part of the token
                 fetchedUser.password = undefined;
-                const token = sign({ result: fetchedUser }, process.env.JWT_SECRET_KEY as Secret, {
+                const token = sign({ ...fetchedUser }, process.env.JWT_SECRET_KEY as Secret, {
                     expiresIn: '1h'
                 });
                 res.status(200).json({

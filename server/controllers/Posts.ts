@@ -13,6 +13,16 @@ class PostsController {
             throw new Error(error);
         });
     }
+
+    getPostsByUsername(username: string) {
+        return this
+        .postsService
+        .getPostsByUsername(username)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error)
+        });
+    }
 }
 
 export default PostsController;

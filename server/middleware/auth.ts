@@ -6,7 +6,7 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
 
     if(token) {
         token = token.split(' ')[1];
-        verify(token, process.env.JWT_SECRET_KEY as Secret, (error, _decoded) => {
+        verify(token, process.env.JWT_SECRET_KEY as Secret, (error, decoded) => {
             if (error) {
                 res.status(500).json({
                     success: 0,
@@ -14,6 +14,7 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
                     error,
                 })
             } else {
+                req.body.authUser = decoded;
                 next();
             }
         });
