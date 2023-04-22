@@ -28,7 +28,11 @@ class UsersService {
                 [username],
                 (error, results, _fields) => {
                     if (error) reject(error);
-                    if (results) resolve(JSON.parse(JSON.stringify(results))[0]);
+                    if (results) {
+                        const resultsJson = JSON.parse(JSON.stringify(results));
+                        if (resultsJson.length > 0) resolve(resultsJson[0])
+                        else resolve({});
+                    };
                 }
             );
         });

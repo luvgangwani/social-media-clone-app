@@ -1,3 +1,4 @@
+import { Status } from "../enum";
 import UsersService from "../services/Users";
 import { Users } from "../types";
 import { genSaltSync, hashSync } from 'bcrypt';
@@ -9,6 +10,8 @@ class UsersController {
     create(user: Users) {
         const salt = genSaltSync(10);
         user.password = hashSync(user.password as string, salt);
+
+        user.status = Status.NEW;
 
         return this
         .usersService
