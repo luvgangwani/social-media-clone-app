@@ -11,6 +11,7 @@ export type Users = {
 }
 
 export type Posts = {
+    id?: Number,
     body: string,
     status: Status,
     username: string,

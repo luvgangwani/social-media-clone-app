@@ -23,6 +23,16 @@ class PostsController {
             throw new Error(error)
         });
     }
+
+    update(post: Posts) {
+        return this
+        .postsService
+        .update(post)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error)
+        })
+    }
 }
 
 export default PostsController;

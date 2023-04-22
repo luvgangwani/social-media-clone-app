@@ -27,6 +27,24 @@ class PostsService {
             )
         });
     }
+
+    update(post: Posts) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `update posts set body=?, status=?, username=? where id=?`,
+                [
+                    post.body,
+                    post.status,
+                    post.username,
+                    post.id,
+                ],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(results);
+                }
+            )
+        });
+    }
 }
 
 export default PostsService;

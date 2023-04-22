@@ -47,4 +47,28 @@ api.post('/', validateToken, (req, res) => {
     })
 });
 
+api.put('/', validateToken, (req, res) => {
+    const { username } = req.body.authUser;
+
+    postsController
+    .update({
+        ...req.body,
+        username
+    })
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'Post updated successfully!',
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while updating posts. Please try again!',
+            error: error.message, 
+        });
+    })
+});
+
 export default api;
