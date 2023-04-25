@@ -18,3 +18,11 @@ export type Posts = {
     created?: string,
     updated?: string,
 }
+
+export type Likes = {
+    id?: Number,
+    username: string,
+    postId: string,
+    created?: string,
+    updated?: string,
+};

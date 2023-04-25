@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import AppConfig from './app-config';
 import posts from './api/v1/posts';
 import users from './api/v1/users';
+import likes from './api/v1/likes';
 
 const { PORT } = AppConfig;
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/api/v1/posts', posts);
 app.use('/api/v1/users', users);
+app.use('/api/v1/likes', likes);
 
 dotenv.config();
 
