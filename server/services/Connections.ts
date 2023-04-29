@@ -19,6 +19,24 @@ class ConnectionsService {
             )
         });
     }
+
+    update(connections: Connections) {
+        return new Promise((resolve, reject) => {
+            pool
+            .query(
+                `update connections set status=? where from_username=? and to_username=?`,
+                [
+                    connections.status,
+                    connections.fromUsername,
+                    connections.toUsername,
+                ],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(results);
+                }
+            )
+        });
+    }
 }
 
 export default ConnectionsService;

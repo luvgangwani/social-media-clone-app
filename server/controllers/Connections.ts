@@ -14,6 +14,16 @@ class ConnectionsController {
             throw new Error(error);
         });
     }
+
+    update(connections: Connections) {
+        return this
+        .connectionsService
+        .update(connections)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error);
+        });
+    }
 }
 
 export default ConnectionsController;

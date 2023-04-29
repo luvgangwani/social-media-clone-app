@@ -33,4 +33,29 @@ api.post('/', validateToken, (req, res) => {
 
 });
 
+api.put('/', validateToken, (req, res) => {
+    const { username: fromUsername } = req.body.authUser;
+
+    connectionsController
+    .update({
+        fromUsername,
+        toUsername: req.body.toUsername,
+        status: Status[req.body.status] as unknown as Status
+    })
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: `Connection status changed to ${req.body.status}`,
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: `Unexpected error enountered when changing the status to ${req.body.status}. Please try again!`,
+            error: error.message,
+        });
+    })
+});
+
 export default api;
