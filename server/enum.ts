@@ -9,7 +9,7 @@ export enum Status {
     // Common
     DELETED,
 
-    // Friends
+    // Connections
     REQUESTED,
     ACCEPTED,
     WITHDRAWN,

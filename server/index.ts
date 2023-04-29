@@ -4,6 +4,7 @@ import AppConfig from './app-config';
 import posts from './api/v1/posts';
 import users from './api/v1/users';
 import likes from './api/v1/likes';
+import connections from './api/v1/connections';
 
 const { PORT } = AppConfig;
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use('/api/v1/posts', posts);
 app.use('/api/v1/users', users);
 app.use('/api/v1/likes', likes);
+app.use('/api/v1/connections', connections);
 
 dotenv.config();
 
