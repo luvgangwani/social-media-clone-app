@@ -1,0 +1,9 @@
+.header {
+    border: 1px solid blue;
+    padding: 30px 15px;
+    background-color: #2F5A60;
+    font-weight: bold;
+    display: flex;
+    color: #ffffff;
+    font-size: 1.8rem;
+}

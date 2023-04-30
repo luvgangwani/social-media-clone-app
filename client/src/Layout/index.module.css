@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,500;1,200&display=swap');
+body {
+    margin: 0;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #E0E0E0;
+    border: 1px solid;
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+}

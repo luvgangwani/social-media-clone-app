@@ -8,7 +8,7 @@ services:
   smca-frontend:
     build: ./client
     ports:
-      - '5123:3000'
+      - '3000:3000'
     container_name: smca-frontend-container
     volumes:
       - ./client:/app/client
