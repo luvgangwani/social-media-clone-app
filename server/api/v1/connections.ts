@@ -58,4 +58,29 @@ api.put('/', validateToken, (req, res) => {
     })
 });
 
+api.delete('/', validateToken, (req, res) => {
+    const { username: fromUsername } = req.body.authUser;
+
+    connectionsController
+    .update({
+        fromUsername,
+        toUsername: req.body.toUsername,
+        status: Status.DELETED,
+    })
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'Connection request deleted successfully!',
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while deleting a connection request. Please try again!',
+            error: error.message,
+        });
+    });
+});
+
 export default api;
