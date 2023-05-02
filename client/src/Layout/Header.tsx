@@ -4,7 +4,7 @@ import styles from './Header.module.css';
 function Header() {
   return (
     <header className={styles.header}>
-        <span style={{ border: '1px solid yellow'}}>Social Media Clone App</span>
+        <span>Social Media Clone App</span>
     </header>
   )
 }

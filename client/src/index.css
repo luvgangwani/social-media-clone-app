@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+input {
+  width: 400px;
+  padding: 15px 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  border-bottom: 2px solid #2F5A60;
+}
+
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 8px 0;
+  background-color: #2F5A60;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: bold;
+}
