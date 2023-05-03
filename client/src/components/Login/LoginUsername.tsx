@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './LoginUsername.module.css';
+import { Link } from 'react-router-dom';
 
 function LoginUsername() {
   return (
@@ -8,7 +9,7 @@ function LoginUsername() {
         <form className={styles.card}>
             <input type='text' name='username' id='username' placeholder='Username'/>
             <button type='submit'>Next</button>
-            <a href="#" className={styles.link}>Sign up</a>
+            <Link to="/signup" className={styles.link}>Sign up</Link>
         </form>
     </div>
   )
