@@ -29,6 +29,25 @@ api.post('/register', (req, res) => {
     })
 });
 
+api.post('/getUserByUsername', (req, res) => {
+    usersController
+    .getUserByUsername(req.body.username)
+    .then(data => {
+        const fetchedUser = data as Users;
+        res.status(200).json({
+            success: 1,
+            userExists: Object.keys(fetchedUser).length > 0,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while finding the user. Please try again!',
+            error: error.message,
+        });
+    })
+});
+
 api.post('/login', (req, res) => {
     usersController
     .getUserByUsername(req.body.username)
