@@ -1,10 +1,13 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import styles from './LoginUsername.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function LoginUsername() {
 
   const [username, setUsername] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -12,6 +15,8 @@ function LoginUsername() {
 
   const validateUsername = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    setIsLoading(true);
 
     fetch('http://localhost:5122/api/v1/users/getUserByUsername', {
       method: 'POST',
@@ -24,11 +29,22 @@ function LoginUsername() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      if (data.userExists) {
+        navigate('/auth/login', {
+          state: {
+            username,
+          }
+        })
+      } else {
+        alert('User does not exist!');
+      }
     })
     .catch(error => {
       console.error(error);
     })
+    .finally(() => {
+      setIsLoading(false);
+    });
   }
 
   return (

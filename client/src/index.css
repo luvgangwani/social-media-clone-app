@@ -32,4 +32,5 @@ button {
   border-radius: 10px;
   color: #ffffff;
   font-weight: bold;
+  cursor: pointer;
 }
