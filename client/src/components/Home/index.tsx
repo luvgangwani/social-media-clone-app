@@ -7,7 +7,7 @@ function Home() {
       if (!localStorage.getItem('token')) {
         navigate('/auth/username')
       }
-    }, [])
+    }, [navigate])
     
   return (
     <></>

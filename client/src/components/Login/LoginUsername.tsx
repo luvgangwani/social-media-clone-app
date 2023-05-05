@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
-import styles from './LoginUsername.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import LoginTemplate from '../../template/LoginTemplate';
 
 function LoginUsername() {
 
@@ -48,14 +48,11 @@ function LoginUsername() {
   }
 
   return (
-    <div className={styles.container}>
-        <div className={styles.title}>Login</div>
-        <form className={styles.card} onSubmit={validateUsername}>
-            <input type='text' name='username' id='username' placeholder='Username' onChange={handleInputChange} value={username}/>
-            <button type='submit'>Next</button>
-            <Link to="/signup" className={styles.link}>Sign up</Link>
-        </form>
-    </div>
+    <LoginTemplate
+      buttonText='Next'
+      handleFormSubmit={validateUsername}>
+      <input type='text' name='username' id='username' placeholder='Username' onChange={handleInputChange} value={username}/>
+    </LoginTemplate>
   )
 }
 
