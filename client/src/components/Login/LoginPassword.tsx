@@ -4,6 +4,9 @@ import { useLocation } from 'react-router-dom';
 import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
+import Setting from '../../setting';
+
+const { ENDPOINT_LOGIN } = Setting;
 
 function LoginPassword() {
 
@@ -24,7 +27,7 @@ function LoginPassword() {
 
     dispatch(setShowLoader(true));
 
-    fetch('http://localhost:5122/api/v1/users/login',{
+    fetch(ENDPOINT_LOGIN ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

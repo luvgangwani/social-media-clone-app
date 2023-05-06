@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
+import Setting from '../../setting';
+
+const { ENDPOINT_GET_USER_BY_USERNAME } = Setting;
 
 function LoginUsername() {
 
@@ -21,7 +24,7 @@ function LoginUsername() {
     
     dispatch(setShowLoader(true));
 
-    fetch('http://localhost:5122/api/v1/users/getUserByUsername', {
+    fetch(ENDPOINT_GET_USER_BY_USERNAME, {
       method: 'POST',
       body: JSON.stringify({
         username,
