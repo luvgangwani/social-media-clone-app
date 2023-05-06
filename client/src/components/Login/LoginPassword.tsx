@@ -2,15 +2,18 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import styles from './LoginPassword.module.css';
 import { useLocation } from 'react-router-dom';
 import LoginTemplate from '../../template/LoginTemplate';
+import { useDispatch } from 'react-redux';
+import { showLoader } from '../../redux/loader';
 
 function LoginPassword() {
 
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const location = useLocation();
 
   const username = location.state.username;
+
+  const dispatch = useDispatch();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -19,7 +22,7 @@ function LoginPassword() {
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setIsLoading(true);
+    dispatch(showLoader(true));
 
     fetch('http://localhost:5122/api/v1/users/login',{
       method: 'POST',
@@ -43,7 +46,7 @@ function LoginPassword() {
       console.error(error);
     })
     .finally(() => {
-      setIsLoading(false);
+      dispatch(showLoader(false));
     })
     
   };

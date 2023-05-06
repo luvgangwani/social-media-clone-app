@@ -1,11 +1,14 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import LoginTemplate from '../../template/LoginTemplate';
+import { useDispatch } from 'react-redux';
+import { showLoader } from '../../redux/loader';
 
 function LoginUsername() {
 
   const [username, setUsername] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -16,7 +19,7 @@ function LoginUsername() {
   const validateUsername = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    setIsLoading(true);
+    dispatch(showLoader(true));
 
     fetch('http://localhost:5122/api/v1/users/getUserByUsername', {
       method: 'POST',
@@ -43,7 +46,7 @@ function LoginUsername() {
       console.error(error);
     })
     .finally(() => {
-      setIsLoading(false);
+      dispatch(showLoader(false));
     });
   }
 
