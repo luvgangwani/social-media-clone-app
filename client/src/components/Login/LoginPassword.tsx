@@ -3,7 +3,7 @@ import styles from './LoginPassword.module.css';
 import { useLocation } from 'react-router-dom';
 import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
-import { showLoader } from '../../redux/loader';
+import { setShowLoader } from '../../redux/loader';
 
 function LoginPassword() {
 
@@ -22,7 +22,7 @@ function LoginPassword() {
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    dispatch(showLoader(true));
+    dispatch(setShowLoader(true));
 
     fetch('http://localhost:5122/api/v1/users/login',{
       method: 'POST',
@@ -46,7 +46,7 @@ function LoginPassword() {
       console.error(error);
     })
     .finally(() => {
-      dispatch(showLoader(false));
+      dispatch(setShowLoader(false));
     })
     
   };

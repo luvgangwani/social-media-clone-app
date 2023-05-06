@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
-import { showLoader } from '../../redux/loader';
+import { setShowLoader } from '../../redux/loader';
 
 function LoginUsername() {
 
@@ -19,7 +19,7 @@ function LoginUsername() {
   const validateUsername = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    dispatch(showLoader(true));
+    dispatch(setShowLoader(true));
 
     fetch('http://localhost:5122/api/v1/users/getUserByUsername', {
       method: 'POST',
@@ -46,7 +46,7 @@ function LoginUsername() {
       console.error(error);
     })
     .finally(() => {
-      dispatch(showLoader(false));
+      dispatch(setShowLoader(false));
     });
   }
 

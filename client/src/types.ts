@@ -5,3 +5,13 @@ export type LoginTemplateProps = {
     buttonText: string,
     children: React.ReactNode,
 }
+
+export type LoaderProps = {
+    show: boolean
+}
+
+export type LoaderState = {
+    loader: {
+        show: boolean,
+    }
+}
