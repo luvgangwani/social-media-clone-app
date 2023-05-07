@@ -3,6 +3,8 @@
     background-color: #2F5A60;
     font-weight: bold;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: #ffffff;
     font-size: 1.8rem;
     margin-bottom: 50px;

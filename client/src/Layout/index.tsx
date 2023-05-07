@@ -4,6 +4,7 @@ import Header from './Header';
 import Loader from '../components/Loader';
 import { useSelector } from 'react-redux';
 import { LoaderState } from '../types';
+import { Outlet } from 'react-router-dom';
 
 function Layout({ children }: React.PropsWithChildren) {
 
@@ -13,7 +14,7 @@ function Layout({ children }: React.PropsWithChildren) {
     <div className={styles.container}>
         <Header />
         <Loader show={showLoader} />
-        { children }
+        <Outlet />
     </div>
   )
 }
