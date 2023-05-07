@@ -3,6 +3,7 @@ import LoginUsername from "./components/Login/LoginUsername";
 import LoginPassword from "./components/Login/LoginPassword";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
+import Feed from "./components/Feed";
 
 const routes = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const routes = createBrowserRouter([
         path: '/auth/login',
         Component: LoginPassword
     },
+    {
+        path: 'feed',
+        Component: Feed,
+    }
 ]);
 
 export default routes;

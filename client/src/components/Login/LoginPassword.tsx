@@ -5,6 +5,7 @@ import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
 import Setting from '../../setting';
+import { setToken } from '../../redux/auth';
 
 const { ENDPOINT_LOGIN } = Setting;
 
@@ -39,10 +40,12 @@ function LoginPassword() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       const { success, token } = data;
       if (success) {
+        // set the local storage
         localStorage.setItem('token', token);
+        // update the store with the token so it redirects to the home page
+        dispatch(setToken(token));
       }
     })
     .catch(error => {
