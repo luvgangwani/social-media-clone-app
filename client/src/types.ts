@@ -15,9 +15,3 @@ export type LoaderState = {
         show: boolean,
     }
 }
-
-export type AuthState = {
-    auth: {
-        token: string | null,
-    }
-}

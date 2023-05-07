@@ -1,11 +1,10 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import styles from './LoginPassword.module.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
 import Setting from '../../setting';
-import { setToken } from '../../redux/auth';
 
 const { ENDPOINT_LOGIN } = Setting;
 
@@ -18,6 +17,8 @@ function LoginPassword() {
   const username = location.state.username;
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -44,8 +45,9 @@ function LoginPassword() {
       if (success) {
         // set the local storage
         localStorage.setItem('token', token);
-        // update the store with the token so it redirects to the home page
-        dispatch(setToken(token));
+
+        // redirect to the feed page
+        navigate('/feed')
       }
     })
     .catch(error => {

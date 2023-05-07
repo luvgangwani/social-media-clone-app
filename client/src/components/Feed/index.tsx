@@ -1,4 +1,5 @@
 import React from 'react'
+import withAuth from '../../hoc/withAuth';
 
 function Feed() {
   return (
@@ -6,5 +7,5 @@ function Feed() {
   )
 }
 
-export default Feed;
+export default withAuth(Feed);
  
