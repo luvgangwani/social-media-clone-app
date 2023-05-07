@@ -3,3 +3,9 @@
     font-size: 1.1rem;
     column-gap: 15px;
 }
+
+nav > * {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ffffff;
+}
