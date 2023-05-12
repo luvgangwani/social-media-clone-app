@@ -15,3 +15,8 @@ export type LoaderState = {
         show: boolean,
     }
 }
+
+export type ModalProps = {
+    title: string,
+    children: React.ReactNode,
+};

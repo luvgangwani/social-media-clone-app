@@ -9,3 +9,23 @@ nav > * {
     cursor: pointer;
     color: #ffffff;
 }
+
+.actions {
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.actions button {
+    width: 80px;
+    padding: 10px 0;
+}
+
+.actions .yes {
+    background-color: #b81313;
+}
+
+.actions .no {
+    background-color: #2F5A60;
+}

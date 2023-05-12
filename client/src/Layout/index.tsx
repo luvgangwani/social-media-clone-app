@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { LoaderState } from '../types';
 import { Outlet } from 'react-router-dom';
 
-function Layout({ children }: React.PropsWithChildren) {
+function Layout() {
 
   const { show: showLoader } = useSelector((state: LoaderState) => state.loader);
 
