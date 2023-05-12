@@ -8,6 +8,7 @@ import Layout from "./Layout";
 const routes = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Layout />}>
+            <Route index element={ localStorage.getItem('token') ? <Feed /> : <LoginUsername /> } />
             <Route path="/signup" element={<Signup />} />
             <Route path="/auth/username" element={<LoginUsername />} />
             <Route path="/auth/login" element={<LoginPassword />} />
