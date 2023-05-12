@@ -1,17 +1,18 @@
 import React from 'react'
 import { LoaderProps } from '../../types'
 import styles from './index.module.css';
+import Overlay from '../../template/Overlay';
 
 function Loader({show}: LoaderProps) {
   return (
     show
     ?
-    <div className={styles.overlay}>
+    <Overlay>
       <div className={styles.loader}></div>
-    </div>
+    </Overlay>
     :
     <></>
   )
 }
 
-export default Loader
+export default Loader;
