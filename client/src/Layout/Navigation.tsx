@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
-import Overlay from '../template/Overlay';
 import Modal from '../template/Modal';
 
 function Navigation() {
