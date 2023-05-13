@@ -56,6 +56,8 @@ function LoginUsername() {
   return (
     <LoginTemplate
       buttonText='Next'
+      pageTitle='Login'
+      isSignUp={false}
       handleFormSubmit={validateUsername}>
       <input type='text' name='username' id='username' placeholder='Username' onChange={handleInputChange} value={username}/>
     </LoginTemplate>

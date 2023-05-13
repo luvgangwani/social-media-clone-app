@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import styles from './LoginPassword.module.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
@@ -17,8 +17,6 @@ function LoginPassword() {
   const username = location.state.username;
 
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -62,6 +60,8 @@ function LoginPassword() {
   return (
     <LoginTemplate
       buttonText='Login'
+      isSignUp={false}
+      pageTitle='Login'
       handleFormSubmit={handleLogin}>
       <span className={styles.username}>Username: {username}</span>
       <input

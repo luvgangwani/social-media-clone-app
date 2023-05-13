@@ -8,6 +8,7 @@ class Setting {
     // Endpoints
     public static ENDPOINT_GET_USER_BY_USERNAME: string = `${this.USERS_SERVICE_URL}/getUserByUsername`;
     public static ENDPOINT_LOGIN: string = `${this.USERS_SERVICE_URL}/login`;
+    public static ENDPOINT_SIGNUP: string = `${this.USERS_SERVICE_URL}/register`;
 }
 
 export default Setting;
