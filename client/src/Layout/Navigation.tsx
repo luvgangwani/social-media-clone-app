@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Navigation.module.css';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, redirect, useNavigate } from 'react-router-dom';
 import Modal from '../template/Modal';
 import { useDispatch } from 'react-redux';
 import { setShowModal } from '../redux/modal';
@@ -21,7 +21,8 @@ function Navigation() {
   const handleYesClick = () => {
     localStorage.removeItem('token');
     dispatch(setShowModal(false));
-    navigate('/');
+    // TODO: fix bug when navigate() doesn't remove nav links from the header
+    window.location.href = '/';
   }
 
   return (

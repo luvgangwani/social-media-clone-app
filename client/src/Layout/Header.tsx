@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import Navigation from './Navigation';
 
 function Header() {
-
+  console.log(localStorage.getItem('token'));
   return (
     <header className={styles.header}>
         <span>Social Media Clone App</span>
