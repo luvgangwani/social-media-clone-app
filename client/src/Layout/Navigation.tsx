@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Navigation.module.css';
-import { NavLink, redirect, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Modal from '../template/Modal';
 import { useDispatch } from 'react-redux';
 import { setShowModal } from '../redux/modal';
@@ -8,7 +8,6 @@ import { setShowModal } from '../redux/modal';
 function Navigation() {
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleLogoutClick = () => {
     dispatch(setShowModal(true));
