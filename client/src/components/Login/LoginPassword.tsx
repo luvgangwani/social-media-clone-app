@@ -47,7 +47,7 @@ function LoginPassword() {
         localStorage.setItem('token', token);
 
         // redirect to the feed page
-        navigate('/feed')
+        window.location.href = '/feed';
       }
     })
     .catch(error => {
