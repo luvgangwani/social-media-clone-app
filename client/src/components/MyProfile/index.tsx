@@ -1,4 +1,5 @@
 import React from 'react'
+import withAuth from '../../hoc/withAuth';
 
 function MyProfile() {
   return (
@@ -6,4 +7,4 @@ function MyProfile() {
   )
 }
 
-export default MyProfile
+export default withAuth(MyProfile);
