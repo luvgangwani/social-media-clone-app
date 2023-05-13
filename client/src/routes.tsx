@@ -4,6 +4,9 @@ import LoginPassword from "./components/Login/LoginPassword";
 import Signup from "./components/Signup";
 import Feed from "./components/Feed";
 import Layout from "./Layout";
+import MyProfile from "./components/MyProfile";
+import MyAccount from "./components/MyAccount";
+import Posts from "./components/Posts";
 
 const routes = createBrowserRouter(
     createRoutesFromElements(
@@ -13,6 +16,9 @@ const routes = createBrowserRouter(
             <Route path="/auth/username" element={<LoginUsername />} />
             <Route path="/auth/login" element={<LoginPassword />} />
             <Route path="/feed" element={<Feed />} />
+            <Route path="/profile" element={<MyProfile />} />
+            <Route path="/account" element={<MyAccount />} />
+            <Route path="/posts" element={<Posts />} />
         </Route>
     )
 );
