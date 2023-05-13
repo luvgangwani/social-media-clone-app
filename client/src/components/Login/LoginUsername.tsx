@@ -34,15 +34,15 @@ function LoginUsername() {
       },
     })
     .then(response => response.json())
-    .then(data => {
-      if (data.userExists) {
+    .then(({ userExists, message }) => {
+      if (userExists) {
         navigate('/auth/login', {
           state: {
             username,
           }
         })
       } else {
-        alert('User does not exist!');
+        alert(message);
       }
     })
     .catch(error => {

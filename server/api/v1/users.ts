@@ -33,10 +33,16 @@ api.post('/getUserByUsername', (req, res) => {
     usersController
     .getUserByUsername(req.body.username)
     .then(data => {
-        const fetchedUser = data as Users;
-        res.status(200).json({
-            success: 1,
-            userExists: Object.keys(fetchedUser).length > 0,
+        const userExists = Object.keys(data as Users).length > 0
+        let statusCode = 500;
+        let message = 'User does not exist!';
+        if (userExists) {
+            statusCode = 200;
+            message = 'User exists!'
+        }
+        res.status(statusCode).json({
+            userExists,
+            message,
         });
     })
     .catch(error => {

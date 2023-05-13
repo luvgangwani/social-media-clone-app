@@ -39,17 +39,19 @@ function LoginPassword() {
     })
     .then(response => response.json())
     .then(data => {
-      const { success, token } = data;
+      const { success, token, message } = data;
       if (success) {
         // set the local storage
         localStorage.setItem('token', token);
 
         // redirect to the feed page
         window.location.href = '/feed';
+      } else {
+        alert(message);
       }
     })
     .catch(error => {
-      console.error(error);
+      alert(error.message);
     })
     .finally(() => {
       dispatch(setShowLoader(false));
