@@ -1,8 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
-import LoginTemplate from '../../template/LoginTemplate';
 import { SignupState } from '../../types';
 import Setting from '../../setting';
 import { useNavigate } from 'react-router-dom';
+import AuthTemplate from '../../template/AuthTemplate';
 
 
 function Signup() {
@@ -54,7 +54,7 @@ function Signup() {
   };
 
   return (
-    <LoginTemplate
+    <AuthTemplate
       buttonText='Sign up'
       pageTitle='Sign up'
       isSignUp={true}
@@ -100,7 +100,7 @@ function Signup() {
           value={user.confirmPassword}
           onChange={handleInputChange}
         />
-      </LoginTemplate>
+      </AuthTemplate>
   )
 }
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from './LoginTemplate.module.css';
-import { LoginTemplateProps } from '../types';
+import styles from './AuthTemplate.module.css';
+import { AuthTemplateProps } from '../types';
 import { Link } from 'react-router-dom';
 
-function LoginTemplate({ handleFormSubmit, buttonText, pageTitle, isSignUp, children }: LoginTemplateProps) {
+function AuthTemplate({ handleFormSubmit, buttonText, pageTitle, isSignUp, children }: AuthTemplateProps) {
   return (
     <div className={styles.container}>
         <div className={styles.title}>{pageTitle}</div>
@@ -22,4 +22,4 @@ function LoginTemplate({ handleFormSubmit, buttonText, pageTitle, isSignUp, chil
   )
 }
 
-export default LoginTemplate;
+export default AuthTemplate;

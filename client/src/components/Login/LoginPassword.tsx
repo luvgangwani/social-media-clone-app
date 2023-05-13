@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import styles from './LoginPassword.module.css';
 import { useLocation } from 'react-router-dom';
-import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
 import Setting from '../../setting';
+import AuthTemplate from '../../template/AuthTemplate';
 
 const { ENDPOINT_LOGIN } = Setting;
 
@@ -60,7 +60,7 @@ function LoginPassword() {
   };
 
   return (
-    <LoginTemplate
+    <AuthTemplate
       buttonText='Login'
       isSignUp={false}
       pageTitle='Login'
@@ -74,7 +74,7 @@ function LoginPassword() {
         onChange={handleInputChange}
         value={password}
       />
-    </LoginTemplate>
+    </AuthTemplate>
   )
 }
 

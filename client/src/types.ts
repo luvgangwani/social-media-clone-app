@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 
-export type LoginTemplateProps = {
+export type AuthTemplateProps = {
     handleFormSubmit: (e: FormEvent<HTMLFormElement>) => void,
     buttonText: string,
     pageTitle: string,

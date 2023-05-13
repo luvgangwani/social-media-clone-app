@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import LoginTemplate from '../../template/LoginTemplate';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
 import Setting from '../../setting';
+import AuthTemplate from '../../template/AuthTemplate';
 
 const { ENDPOINT_GET_USER_BY_USERNAME } = Setting;
 
@@ -54,13 +54,13 @@ function LoginUsername() {
   }
 
   return (
-    <LoginTemplate
+    <AuthTemplate
       buttonText='Next'
       pageTitle='Login'
       isSignUp={false}
       handleFormSubmit={validateUsername}>
       <input type='text' name='username' id='username' placeholder='Username' onChange={handleInputChange} value={username}/>
-    </LoginTemplate>
+    </AuthTemplate>
   )
 }
 
