@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import like from '../assets/like.svg';
 import { PostCardProps } from '../types';
 
-function PostCard({ name, isFeed = false, body, likeCount, timestamp }: PostCardProps) {
+function PostCard({ id, name, isFeed = false, body, likeCount, timestamp }: PostCardProps) {
   return (
     <div className={styles.card}>
         <div className={styles.title}>
@@ -15,8 +15,8 @@ function PostCard({ name, isFeed = false, body, likeCount, timestamp }: PostCard
             <></>
             :
             <div className={styles.actions}>
-                <button>Edit</button>
-                <button>X</button>
+                <button onClick={() => {console.log(id)}}>Edit</button>
+                <button onClick={() => {console.log(id)}}>X</button>
             </div>
         }
         </div>

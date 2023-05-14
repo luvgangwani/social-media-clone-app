@@ -38,9 +38,19 @@ export type SignupState = {
 };
 
 export type PostCardProps = {
+    id: number,
     name: string,
     isFeed?: boolean,
     body: string,
     likeCount: number,
     timestamp: string,
 };
+
+export type PostsState = {
+    id: number,
+    name: string,
+    body: string,
+    likesCount: number,
+    created: string,
+    updated: string,
+}

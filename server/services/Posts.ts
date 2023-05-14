@@ -19,7 +19,7 @@ class PostsService {
     getPostsByUsername(username: string) {
         return new Promise((resolve, reject) => {
             pool.query(
-                `select * from posts where username=?`,
+                `select id, name, body, likesCount, created, updated from vw_feed where username=?`,
                 [username],
                 (error, results, _fields) => {
                     if (error) reject(error)

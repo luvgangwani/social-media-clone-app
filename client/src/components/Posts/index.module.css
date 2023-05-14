@@ -8,8 +8,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    border: 2px solid;
-    padding: 0 15px;
+    padding: 0 15px 50px 15px;
     row-gap: 30px;
 }
 
