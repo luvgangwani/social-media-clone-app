@@ -36,3 +36,11 @@ export type SignupState = {
     password: string,
     confirmPassword?: string,
 };
+
+export type PostCardProps = {
+    name: string,
+    isFeed?: boolean,
+    body: string,
+    likeCount: number,
+    timestamp: string,
+};
