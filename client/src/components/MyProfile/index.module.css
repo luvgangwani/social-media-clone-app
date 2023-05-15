@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+    border: 2px solid blue;
+}
+
+.header {
+    font-size: 1.6rem;
+    color: #2F5A60;
+    font-weight: bold;
+    margin-bottom: 100px;
+    border: 2px solid green;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 30px;
+    border: 2px solid yellow;
+}
+
+.username {
+    color: #605B5B;
+}
+
+.update {
+    align-self: center;
+    width: 100%;
+}
