@@ -8,7 +8,7 @@ function PostCard({ id, name, isFeed = false, body, likeCount, timestamp }: Post
   return (
     <div className={styles.card}>
         <div className={styles.title}>
-        <Link to="/account">{ name }</Link>
+        <Link to="/profile">{ name }</Link>
         {
             isFeed
             ?
