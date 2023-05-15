@@ -46,9 +46,14 @@ function Posts() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.header}>Posts</div>
+        <div className={styles.header}>
+          <span>Posts</span>
+          <button className={styles.add}>Add</button>
+        </div>
         {
-          posts?.map(({ id, name, body, likesCount, updated }, index) => (
+          (posts && posts.length > 0)
+          ?
+          posts.map(({ id, name, body, likesCount, updated }, index) => (
             <PostCard
               key={index}
               id={id}
@@ -58,6 +63,8 @@ function Posts() {
               timestamp={updated}
             />
           ))
+          :
+          <div>You haven't created any post.</div>
         }
       </div>
     </>

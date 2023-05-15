@@ -44,7 +44,7 @@
 
 .interactions {
     display: flex;
-    column-gap: 30px;
+    column-gap: 20px;
     color: #2F5A60;
     align-items: center;
 }
@@ -56,6 +56,10 @@
     border-radius: 7px;
     padding: 1px 11px;
     align-items: center;
+}
+
+.comment {
+    text-decoration: underline;
 }
 
 .timestamp {
