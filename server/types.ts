@@ -35,3 +35,9 @@ export type Connections = {
     created?: string,
     updated?: string,
 };
+
+export type Profile = {
+    firstName: string,
+    lastName: string,
+    username: string,
+}
