@@ -53,4 +53,10 @@ export type PostsState = {
     likesCount: number,
     created: string,
     updated: string,
-}
+};
+
+export type ProfileState = {
+    firstName: string,
+    lastName: string,
+    username: string,
+};
