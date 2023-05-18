@@ -7,9 +7,10 @@ function Loader({show}: LoaderProps) {
   return (
     show
     ?
-    <Overlay>
+    <>
+      <Overlay></Overlay>
       <div className={styles.loader}></div>
-    </Overlay>
+    </>
     :
     <></>
   )

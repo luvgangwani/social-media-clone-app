@@ -15,13 +15,14 @@ function Modal({ title, children }: ModalProps) {
     dispatch(setShowModal(false));
   };
   return show ? (
-    <Overlay>
+    <>
+      <Overlay></Overlay>
       <div className={styles.container}>
         <button className={styles.close} onClick={handleCloseClick}>Close</button>
         <div className={styles.title}>{title}</div>
         <div className={styles.body}>{children}</div>
       </div>
-    </Overlay>
+    </>
   ) : (
     <></>
   );

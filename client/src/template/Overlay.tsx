@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Overlay.module.css';
 
-function Overlay({ children }: React.PropsWithChildren) {
+function Overlay() {
   return (
-    <div className={styles.overlay}>{children}</div>
+    <div className={styles.overlay}></div>
   )
 }
 
