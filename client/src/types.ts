@@ -38,12 +38,13 @@ export type SignupState = {
 };
 
 export type PostCardProps = {
-    id: number,
     name: string,
     isFeed?: boolean,
     body: string,
     likeCount: number,
     timestamp: string,
+    onEdit: () => void,
+    onDelete: () => void,
 };
 
 export type PostsState = {
@@ -54,6 +55,11 @@ export type PostsState = {
     created: string,
     updated: string,
 };
+
+export type PostFormState = {
+    id?: number,
+    body: string,
+}
 
 export type ProfileState = {
     firstName: string,

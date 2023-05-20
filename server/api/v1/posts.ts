@@ -50,8 +50,12 @@ api.get('/:id', validateToken, (req, res) => {
 });
 
 api.post('/', validateToken, (req, res) => {
+    const { username } = req.body.authUser;
     postsController
-    .create(req.body)
+    .create({
+        ...req.body,
+        username,
+    })
     .then(data => {
         res.status(200).json({
             success: 1,

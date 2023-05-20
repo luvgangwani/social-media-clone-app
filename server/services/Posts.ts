@@ -7,7 +7,11 @@ class PostsService {
         return new Promise((resolve, reject) => {
             pool.query(
                 `insert into posts set ?`,
-                post,
+                {
+                    body: post.body,
+                    username: post.username,
+                    status: Status.NEW,
+                },
                 (error, results, _fields) => {
                     if (error) reject(error)
                     if (results) resolve(results)
@@ -49,10 +53,9 @@ class PostsService {
     update(post: Posts) {
         return new Promise((resolve, reject) => {
             pool.query(
-                `update posts set body=?, status=?, username=? where id=?`,
+                `update posts set body=?, username=? where id=?`,
                 [
                     post.body,
-                    post.status,
                     post.username,
                     post.id,
                 ],
