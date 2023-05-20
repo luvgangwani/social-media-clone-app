@@ -24,6 +24,16 @@ class PostsController {
         });
     }
 
+    getPostById(id: number, username: string) {
+        return this
+        .postsService
+        .getPostById(id, username)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error)
+        })
+    }
+
     update(post: Posts) {
         return this
         .postsService

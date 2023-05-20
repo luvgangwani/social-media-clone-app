@@ -29,6 +29,23 @@ class PostsService {
         });
     }
 
+    getPostById(id: number, username: string) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select id, body from vw_feed where username=? and id=?`,
+                [username, id],
+                (error, results, _fields) => {
+                    if (error) reject(error)
+                    if (results) {
+                        const resultsJson = JSON.parse(JSON.stringify(results));
+                        if (resultsJson.length > 0) resolve(resultsJson[0])
+                        else resolve({});
+                    }
+                }
+            )
+        });
+    }
+
     update(post: Posts) {
         return new Promise((resolve, reject) => {
             pool.query(

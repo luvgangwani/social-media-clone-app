@@ -28,6 +28,27 @@ api.get('/', validateToken, (req, res) => {
     })
 });
 
+api.get('/:id', validateToken, (req, res) => {
+    const { username } = req.body.authUser;
+    
+    postsController
+    .getPostById(Number(req.params.id), username)
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'Post fetched!',
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while fetching post. Please try again!',
+            error: error.message,
+        });
+    })
+});
+
 api.post('/', validateToken, (req, res) => {
     postsController
     .create(req.body)
