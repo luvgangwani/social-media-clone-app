@@ -1,5 +1,4 @@
 .container {
-    border: 2px solid brown;
     padding: 0 15px 50px 15px;
 }
 
@@ -8,18 +7,15 @@
     font-weight: bold;
     color: #2F5A60;
     margin-bottom: 50px;
-    border: 2px solid orange;
 }
 
 .items {
-    border: 2px solid green;
     display: flex;
     flex-direction: column;
     row-gap: 30px;
 }
 
 .item {
-    border: 2px solid gray;
     display: flex;
     justify-content: space-between;
     padding: 25px 15px;
