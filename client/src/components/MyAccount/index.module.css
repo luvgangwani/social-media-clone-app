@@ -30,8 +30,29 @@
     box-shadow: 0 4px 7px 0 #9c9c9c;
 }
 
-button {
+.container button {
     padding: 0;
     background-color: transparent;
     color: #b81313;
+}
+
+.actions {
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.actions button {
+    width: 80px;
+    padding: 10px 0;
+    color: #ffffff;
+}
+
+.actions .yes {
+    background-color: #b81313;
+}
+
+.actions .no {
+    background-color: #2F5A60;
 }
