@@ -103,7 +103,32 @@ function Posts() {
   }
 
   const handlePostDelete = (id: number)  => {
-    console.log("Delete", id)
+    dispatch(setShowLoader(true));
+    fetch(Setting.ENDPOINT_POSTS, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id,
+      })
+    })
+    .then(response => response.json())
+    .then(({ success, message }) => {
+      if (success) {
+        alert(message)
+        setRefreshPosts(true);
+      } else {
+        alert(message)
+      }
+    })
+    .catch(error => {
+      alert(error.message)
+    })
+    .finally(() => {
+      dispatch(setShowLoader(false));
+    });
   }
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
