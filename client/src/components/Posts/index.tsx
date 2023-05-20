@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import withAuth from '../../hoc/withAuth';
 import styles from './index.module.css';
 import PostCard from '../../template/PostCard';
@@ -16,13 +16,14 @@ function Posts() {
 
   const [posts, setPosts] = useState<PostsState[] | null>(null);
   const [formTitle, setFormTitle] = useState(ADD_POST);
+  const [refreshPosts, setRefreshPosts] = useState(false);
   const [postInProgress, setPostInProgress] = useState<PostFormState>({
     body: '',
   });
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const fetchPosts = useCallback(() => {
     dispatch(setShowLoader(true));
     fetch(Setting.ENDPOINT_POSTS, {
       headers: {
@@ -48,7 +49,18 @@ function Posts() {
     .finally(() => {
       dispatch(setShowLoader(false));
     });
-  }, [dispatch])
+  }, [dispatch]);
+
+  useEffect(() => {
+    fetchPosts()
+  }, [fetchPosts])
+
+  useEffect(() => {
+    if (refreshPosts) {
+      fetchPosts();
+      setRefreshPosts(false);
+    }
+  }, [refreshPosts, fetchPosts])
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setPostInProgress({
@@ -113,6 +125,7 @@ function Posts() {
     .then(({ success, message }) => {
       if (success) {
         alert(message)
+        setRefreshPosts(success);
       } else {
         alert(message)
       }
