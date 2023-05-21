@@ -56,6 +56,8 @@
     border-radius: 7px;
     padding: 1px 11px;
     align-items: center;
+    background-color: transparent;
+    color: #2F5A60;
 }
 
 .comment {

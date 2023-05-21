@@ -23,10 +23,10 @@ function PostCard({ name, isFeed = false, body, likeCount, timestamp, onEdit, on
         <div className={styles.body}>{ body }</div>
         <div className={styles.footer}>
         <div className={styles.interactions}>
-            <span className={styles.like}>
-            <img src={like} alt='like' />
-            { likeCount }
-            </span>
+            <button className={styles.like}>
+              <img src={like} alt='like' />
+              { likeCount }
+            </button>
             <span className={styles.comment}>Comment</span>
         </div>
         <span className={styles.timestamp}>{ timestamp }</span>
