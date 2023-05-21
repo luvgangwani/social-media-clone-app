@@ -54,6 +54,25 @@ api.post('/getUserByUsername', (req, res) => {
     })
 });
 
+api.post('/search', validateToken, (req, res) => {
+    usersController
+    .search(req.body.searchQuery)
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'Results fetched successfully!',
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while fetching search results. Please try again!',
+            error: error.message,
+        });
+    })
+});
+
 api.post('/login', (req, res) => {
     usersController
     .getUserByUsername(req.body.username)

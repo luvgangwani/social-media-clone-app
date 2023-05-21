@@ -32,6 +32,16 @@ class UsersController {
         })
     }
 
+    search(searchQuery: string) {
+        return this
+        .usersService
+        .search(`%${searchQuery}%`)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error)
+        })
+    }
+
     update(user: Users) {
         return this
         .usersService
