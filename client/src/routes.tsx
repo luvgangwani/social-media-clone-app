@@ -7,6 +7,7 @@ import Layout from "./Layout";
 import MyProfile from "./components/MyProfile";
 import MyAccount from "./components/MyAccount";
 import Posts from "./components/Posts";
+import Search from "./components/Search";
 
 const routes = createBrowserRouter(
     createRoutesFromElements(
@@ -19,6 +20,7 @@ const routes = createBrowserRouter(
             <Route path="/profile" element={<MyProfile />} />
             <Route path="/account" element={<MyAccount />} />
             <Route path="/posts" element={<Posts />} />
+            <Route path="/search" element={<Search />} />
         </Route>
     )
 );
