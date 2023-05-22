@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    width: 100%;
+}
+
+.record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f1f0f0;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 2px #a2a1a1;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #2F5A60;
+    row-gap: 5px;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.username {
+    font-size: 1rem;
+}
+
+.connect {
+    background-color: transparent;
+    color: #2F5A60;
+    text-decoration: underline;
+}

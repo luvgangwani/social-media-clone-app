@@ -66,3 +66,12 @@ export type ProfileState = {
     lastName: string,
     username: string,
 };
+
+type SearchResult = {
+    name: string,
+    username: string,
+}
+
+export type SearchResultProps = {
+    searchResults: SearchResult[]
+}

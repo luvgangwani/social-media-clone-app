@@ -3,6 +3,7 @@ import styles from './index.module.css';
 import Setting from '../../setting';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
+import SearchResults from './SearchResults';
 
 function Search() {
     const [searchResults, setSearchResults] = useState([]);
@@ -48,9 +49,7 @@ function Search() {
             autoFocus
             placeholder='Search'
             onChange={handleInputChange} />
-        {
-          JSON.stringify(searchResults)
-        }
+        <SearchResults searchResults={searchResults} />
     </div>
   )
 }

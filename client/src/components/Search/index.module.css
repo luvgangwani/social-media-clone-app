@@ -1,17 +1,15 @@
 .container {
     display: flex;
     flex-direction: column;
-    border: 2px solid brown;
     align-items: center;
     padding: 0 15px 50px 15px;
+    row-gap: 50px;
 }
 
 .header {
     font-size: 1.5rem;
     font-weight: bold;
     color: #2F5A60;
-    margin-bottom: 50px;
-    border: 2px solid green;
 }
 
 .search {
