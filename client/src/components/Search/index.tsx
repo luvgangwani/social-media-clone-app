@@ -33,6 +33,8 @@ function Search() {
           .finally(() => {
             dispatch(setShowLoader(false))
           });
+        } else {
+          setSearchResults([]);
         }
     };
   return (
