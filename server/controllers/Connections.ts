@@ -15,10 +15,10 @@ class ConnectionsController {
         });
     }
 
-    update(connections: Connections) {
+    delete(connections: Connections) {
         return this
         .connectionsService
-        .update(connections)
+        .delete(connections)
         .then(data => data)
         .catch(error => {
             throw new Error(error);
