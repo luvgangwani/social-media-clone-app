@@ -39,11 +39,11 @@ class UsersService {
         });
     }
 
-    search(searchQuery: string) {
+    search(searchQuery: string, username: string) {
         return new Promise((resolve, reject) => {
             pool.query(
-                `select CONCAT(firstName,' ', lastName) as name, username from vw_users where firstName LIKE ? OR lastName LIKE ? or username like ?;`,
-                [searchQuery, searchQuery, searchQuery],
+                `select CONCAT(firstName,' ', lastName) as name, username from vw_users where (firstName LIKE ? OR lastName LIKE ? or username like ?) AND username <> ?;`,
+                [searchQuery, searchQuery, searchQuery, username],
                 (error, results, _fields) => {
                     if (error) reject(error);
                     if (results) resolve(results)

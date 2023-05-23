@@ -55,8 +55,9 @@ api.post('/getUserByUsername', (req, res) => {
 });
 
 api.post('/search', validateToken, (req, res) => {
+    const { username } = req.body.authUser;
     usersController
-    .search(req.body.searchQuery)
+    .search(req.body.searchQuery, username)
     .then(data => {
         res.status(200).json({
             success: 1,

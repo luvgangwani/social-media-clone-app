@@ -32,10 +32,10 @@ class UsersController {
         })
     }
 
-    search(searchQuery: string) {
+    search(searchQuery: string, username: string) {
         return this
         .usersService
-        .search(`%${searchQuery}%`)
+        .search(`%${searchQuery}%`, username)
         .then(data => data)
         .catch(error => {
             throw new Error(error)
