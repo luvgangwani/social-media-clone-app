@@ -83,4 +83,25 @@ api.delete('/', validateToken, (req, res) => {
     });
 });
 
+api.get('/getConnectionListByUsername', validateToken, (req, res) => {
+    const { username } = req.body.authUser;
+
+    connectionsController
+    .getConnectionListByUsername(username)
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'Connection list fetched successfully!',
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while fetching the list of connections. Please try again!',
+            error: error.message,
+        });
+    });
+});
+
 export default api;

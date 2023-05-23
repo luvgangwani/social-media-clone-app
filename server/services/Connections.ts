@@ -37,6 +37,20 @@ class ConnectionsService {
             )
         });
     }
+
+    getConnectionListByUsername(username: string) {
+        return new Promise((resolve, reject) => {
+            pool
+            .query(
+                `select from_username, to_username from connections where from_username=? or to_username=?;`,
+                [username, username],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(results);
+                }
+            )
+        });
+    }
 }
 
 export default ConnectionsService;

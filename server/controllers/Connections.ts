@@ -1,5 +1,5 @@
 import ConnectionsService from "../services/Connections";
-import { Connections } from "../types";
+import { ConnectionList, Connections } from "../types";
 
 class ConnectionsController {
 
@@ -23,6 +23,23 @@ class ConnectionsController {
         .catch(error => {
             throw new Error(error);
         });
+    }
+
+    getConnectionListByUsername(username: string) {
+        return this
+        .connectionsService
+       .getConnectionListByUsername(username)
+       .then((data) => {
+            const response: string[] = [];
+            (data as ConnectionList[]).map(({ from_username, to_username }) => {
+                if (from_username !== username) response.push(from_username);
+                if (to_username !== username) response.push(to_username);
+            })
+            return response;
+        })
+       .catch(error => {
+        throw new Error(error);
+       });
     }
 }
 

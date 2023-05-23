@@ -36,6 +36,11 @@ export type Connections = {
     updated?: string,
 };
 
+export type ConnectionList = {
+    from_username: string,
+    to_username: string,
+}
+
 export type Profile = {
     firstName: string,
     lastName: string,
