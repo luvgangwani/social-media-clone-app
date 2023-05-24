@@ -75,3 +75,9 @@ type SearchResult = {
 export type SearchResultProps = {
     searchResults: SearchResult[]
 }
+
+export type ConnectionsListState = {
+    connections: {
+        list: string[]
+    }
+}
