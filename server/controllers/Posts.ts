@@ -53,6 +53,16 @@ class PostsController {
             throw new Error(error);
         })
     }
+
+    feed(connectionList: string[]) {
+        return this
+        .postsService
+        .feed(connectionList)
+        .then(data => data)
+        .catch(error => {
+            throw new Error(error);
+        })
+    }
 }
 
 export default PostsController;

@@ -82,6 +82,19 @@ class PostsService {
             )
         });
     }
+
+    feed(connectionList: string[]) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from vw_feed where username IN (?) order by updated desc`,
+                [connectionList],
+                (error, results, _fields) => {
+                    if (error) reject(error)
+                    if (results) resolve(results)
+                }
+            );
+        });
+    }
 }
 
 export default PostsService;

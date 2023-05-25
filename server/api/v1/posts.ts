@@ -115,4 +115,23 @@ api.delete('/', validateToken, (req, res) => {
     })
 });
 
+api.post('/feed', validateToken, (req, res) => {
+    postsController
+    .feed(req.body.connectionList)
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'Feed fetched successfully!',
+            data,
+        })
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while fetching feed. Please try again!',
+            error: error.message,
+        })
+    })
+});
+
 export default api;
