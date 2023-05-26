@@ -1,0 +1,16 @@
+.header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2F5A60;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 50px 15px;
+    row-gap: 30px;
+}

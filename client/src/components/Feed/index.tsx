@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { ConnectionsListState } from '../../types';
 import { PostsState } from '../../types';
 import PostCard from '../../template/PostCard';
+import styles from './index.module.css';
 
 function Feed() {
 
@@ -44,7 +45,8 @@ function Feed() {
   }, [connectionList, dispatch])
   
   return (
-    <>
+    <div className={styles.container}>
+      <div className={styles.header}>Feed</div>
       {
         (feed.length > 0)
         ?
@@ -61,7 +63,7 @@ function Feed() {
         :
         <div>Nothing to show on feed.</div>
       }
-    </>
+    </div>
   )
 }
 
