@@ -43,8 +43,8 @@ export type PostCardProps = {
     body: string,
     likeCount: number,
     timestamp: string,
-    onEdit: () => void,
-    onDelete: () => void,
+    onEdit?: () => void,
+    onDelete?: () => void,
 };
 
 export type PostsState = {

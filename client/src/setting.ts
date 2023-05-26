@@ -14,6 +14,7 @@ class Setting {
     public static ENDPOINT_SIGNUP: string = `${this.USERS_SERVICE_URL}/register`;
     public static ENDPOINT_SEARCH: string = `${this.USERS_SERVICE_URL}/search`;
     public static ENDPOINT_POSTS: string = this.POSTS_SERVICE_URL;
+    public static ENDPOINT_FEED: string = `${this.POSTS_SERVICE_URL}/feed`;
     public static ENDPOINT_PROFILES: string = this.PROFILE_SERVICE_URL;
     public static ENDPOINT_CONNECTIONS: string = this.CONNECTIONS_SERVICE_URL;
     public static ENDPOINT_GET_CONNECTION_LIST_BY_USERNAME: string = `${this.CONNECTIONS_SERVICE_URL}/getConnectionListByUsername`;
