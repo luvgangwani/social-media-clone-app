@@ -81,3 +81,7 @@ export type ConnectionsListState = {
         list: string[]
     }
 }
+
+export type Token = {
+    exp: number,
+}

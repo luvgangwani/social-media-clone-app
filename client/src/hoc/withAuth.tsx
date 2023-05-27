@@ -1,11 +1,15 @@
+import jwtDecode from 'jwt-decode';
 import React from 'react';
-import { Navigate, redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { Token } from '../types';
 
 const withAuth = (Component: React.FC) => {
   const AuthRoute = () => {
-    if (localStorage.getItem('token')) {
+    const token = localStorage.getItem('token');
+    if (token && (Date.now() < (jwtDecode<Token>(token).exp * 1000))) {
         return <Component />;
     } else {
+        localStorage.removeItem('token');
         return <Navigate to={'/auth/username'} />
     }
   }

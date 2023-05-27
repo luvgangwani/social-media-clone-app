@@ -36,11 +36,6 @@ function Posts() {
         setPosts(data)
       } else {
         alert(message)
-        if (error.name === 'TokenExpiredError') {
-          localStorage.removeItem('token');
-          // TODO: fix bug when navigate() doesn't remove nav links from the header
-          window.location.href = '/';
-        }
       }
     })
     .catch(error => {
