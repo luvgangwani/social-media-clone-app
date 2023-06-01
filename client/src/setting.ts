@@ -10,6 +10,7 @@ class Setting {
 
     // Endpoints
     public static ENDPOINT_GET_USER_BY_USERNAME: string = `${this.USERS_SERVICE_URL}/getUserByUsername`;
+    public static ENDPOINT_GET_USERS_BY_USERNAMES: string = `${this.USERS_SERVICE_URL}/getUsersByUsernames`;
     public static ENDPOINT_LOGIN: string = `${this.USERS_SERVICE_URL}/login`;
     public static ENDPOINT_SIGNUP: string = `${this.USERS_SERVICE_URL}/register`;
     public static ENDPOINT_SEARCH: string = `${this.USERS_SERVICE_URL}/search`;
