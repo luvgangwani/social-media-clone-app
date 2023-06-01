@@ -39,6 +39,19 @@ class UsersService {
         });
     }
 
+    getUsersByUsernames(usernames: string[]) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select CONCAT(firstName,' ', lastName) as name, username from vw_users where username IN (?);`,
+                [usernames],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(results);
+                }
+            );
+        });
+    }
+
     search(searchQuery: string, username: string) {
         return new Promise((resolve, reject) => {
             pool.query(

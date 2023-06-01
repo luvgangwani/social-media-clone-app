@@ -26,6 +26,10 @@
     box-shadow: 0 4px 7px 0 #9c9c9c;
 }
 
+.link {
+    color: #2F5A60;
+}
+
 .container button {
     padding: 0;
     background-color: transparent;

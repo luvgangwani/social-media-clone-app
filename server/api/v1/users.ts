@@ -54,6 +54,25 @@ api.post('/getUserByUsername', (req, res) => {
     })
 });
 
+api.post('/getUsersByUsernames', (req, res) => {
+    usersController
+    .getUsersByUsernames(req.body.usernames)
+    .then(data => {
+        res.status(200).json({
+            success: 1,
+            message: 'Connection information fetched successfully!',
+            data,
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            success: 0,
+            message: 'Unexpected error encountered while fetching connections. Please try again!',
+            error: error.message,
+        });
+    })
+});
+
 api.post('/search', validateToken, (req, res) => {
     const { username } = req.body.authUser;
     usersController

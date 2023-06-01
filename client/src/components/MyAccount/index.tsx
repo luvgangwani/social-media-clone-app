@@ -4,10 +4,15 @@ import styles from './index.module.css';
 import Modal from '../../template/Modal';
 import { useDispatch } from 'react-redux';
 import { setShowModal } from '../../redux/modal';
+import { useSelector } from 'react-redux';
+import { ConnectionsListState } from '../../types';
+import { Link } from 'react-router-dom';
 
 function MyAccount() {
 
   const dispatch = useDispatch();
+
+  const connectionList = useSelector((state: ConnectionsListState) => state.connections.list);
 
   const handleLogoutClick = () => {
     dispatch(setShowModal(true));
@@ -40,8 +45,8 @@ function MyAccount() {
             <span>00</span>
           </div>
           <div className={styles.item}>
-            <span>Friends</span>
-            <span>00</span>
+            <Link to='/connections' className={styles.link}>Connections</Link>
+            <span>{connectionList.length}</span>
           </div>
           <div className={styles.item}>
             <button onClick={handleLogoutClick}>Logout</button>

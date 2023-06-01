@@ -32,6 +32,16 @@ class UsersController {
         })
     }
 
+    getUsersByUsernames(usernames: string[]) {
+        return this
+        .usersService
+        .getUsersByUsernames(usernames)
+        .then(data => data)
+        .catch (error => {
+            throw new Error(error)
+        })
+    }
+
     search(searchQuery: string, username: string) {
         return this
         .usersService
