@@ -31,14 +31,35 @@ function ConnectionProfile() {
     .then(response => response.json())
     .then(({ success, message, data }) => {
       if (success) {
-        setProfile({
-          ...profile,
+        setProfile(p => ({
+          ...p,
           name: data[0].name,
           username: data[0].username
-        })
+        }))
       } else {
         alert(message)
       }
+    })
+    .then(() => {
+      fetch(`${Setting.ENDPOINT_POSTS}/${params.username}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+      })
+      .then(response => response.json())
+      .then(({ success, message, data }) => {
+        if (success) {
+          setProfile(p => ({
+            ...p,
+            posts: data
+          }))
+        } else {
+          alert(message)
+        }
+      })
+      .catch(error => {
+        alert(error.message)
+      })
     })
     .catch(error => {
       alert(error.message)
@@ -46,7 +67,7 @@ function ConnectionProfile() {
     .finally(() => {
       dispatch(setShowLoader(false))
     });
-  }, [dispatch]);
+  }, [dispatch, params.username]);
   
   return (
     <div>{params.username}</div>
