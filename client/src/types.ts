@@ -82,6 +82,13 @@ export type ConnectionsListState = {
     }
 }
 
+export type ConnectionListProps = {
+    connections: Array<{
+        name: string,
+        username: string
+    }>
+}
+
 export type Token = {
     exp: number,
 }

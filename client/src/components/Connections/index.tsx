@@ -6,6 +6,7 @@ import Setting from '../../setting';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
 import withAuth from '../../hoc/withAuth';
+import ConnectionList from './ConnectionList';
 
 function Connections() {
 
@@ -52,7 +53,7 @@ function Connections() {
         {
             connections.length > 0
             ?
-            <div>{JSON.stringify(connections)}</div>
+            <ConnectionList connections={connections}/>
             :
             <div>No connections.</div>
         }
