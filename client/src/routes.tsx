@@ -9,6 +9,7 @@ import MyAccount from "./components/MyAccount";
 import Posts from "./components/Posts";
 import Search from "./components/Search";
 import Connections from "./components/Connections";
+import ConnectionProfile from "./components/Connections/Profile";
 
 const routes = createBrowserRouter(
     createRoutesFromElements(
@@ -23,6 +24,7 @@ const routes = createBrowserRouter(
             <Route path="/posts" element={<Posts />} />
             <Route path="/search" element={<Search />} />
             <Route path="/connections" element={<Connections />} />
+            <Route path="/connection/:username" element={<ConnectionProfile />} />
         </Route>
     )
 );
