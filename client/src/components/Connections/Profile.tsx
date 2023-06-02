@@ -4,6 +4,7 @@ import styles from './Profile.module.css';
 import { useDispatch } from 'react-redux';
 import Setting from '../../setting';
 import { setShowLoader } from '../../redux/loader';
+import PostCard from '../../template/PostCard';
 
 function ConnectionProfile() {
 
@@ -70,7 +71,26 @@ function ConnectionProfile() {
   }, [dispatch, params.username]);
   
   return (
-    <div>{params.username}</div>
+    <div>
+      <div>{profile.name ? profile.name : ''}</div>
+      <div>{profile.username ? profile.username : ''}</div>
+      <div>Posts</div>
+      <div>{
+      profile.posts.length > 0
+      ?
+      profile.posts.map(({ body, name, likesCount, updated }, index) => (
+        <PostCard
+          key={index}
+          name={name}
+          body={body}
+          likeCount={likesCount}
+          timestamp={updated}
+          isFeed={true}
+        />
+      ))
+      :
+      `${profile.name} hasn't posted anything.`}</div>
+    </div>
   )
 }
 
