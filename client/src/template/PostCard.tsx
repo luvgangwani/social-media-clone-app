@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import like from '../assets/like.svg';
 import { PostCardProps } from '../types';
 
-function PostCard({ name, isFeed = false, body, likeCount, timestamp, onEdit, onDelete }: PostCardProps) {
+function PostCard({ name, username, isFeed = false, body, likeCount, timestamp, onEdit, onDelete }: PostCardProps) {
   return (
     <div className={styles.card}>
         <div className={styles.title}>
-        <Link to="/profile">{ name }</Link>
+        <Link to={`/connection/${username}`}>{ name }</Link>
         {
             isFeed
             ?

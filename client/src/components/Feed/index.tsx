@@ -50,10 +50,11 @@ function Feed() {
       {
         (feed.length > 0)
         ?
-        feed.map(({ body, name, likesCount, updated }, index) => (
+        feed.map(({ body, username, name, likesCount, updated }, index) => (
           <PostCard
             key={index}
             name={name}
+            username={username}
             body={body}
             likeCount={likesCount}
             timestamp={updated}

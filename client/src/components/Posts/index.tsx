@@ -169,10 +169,11 @@ function Posts() {
         {
           (posts && posts.length > 0)
           ?
-          posts.map(({ id, name, body, likesCount, updated }, index) => (
+          posts.map(({ id, name, username, body, likesCount, updated }, index) => (
             <PostCard
               key={index}
               name={name}
+              username={username}
               body={body}
               likeCount={likesCount}
               timestamp={updated}

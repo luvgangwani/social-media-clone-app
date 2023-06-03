@@ -39,6 +39,7 @@ export type SignupState = {
 
 export type PostCardProps = {
     name: string,
+    username: string,
     isFeed?: boolean,
     body: string,
     likeCount: number,
@@ -50,6 +51,7 @@ export type PostCardProps = {
 export type PostsState = {
     id: number,
     name: string,
+    username: string,
     body: string,
     likesCount: number,
     created: string,
