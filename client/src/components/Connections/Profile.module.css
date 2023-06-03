@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 50px 15px;
+    row-gap: 20px;
+}
+
+.name {
+    font-size: 1.5rem;
+    color: #2F5A60;
+}
+
+.username {
+    color: #2F5A60;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.header {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2F5A60;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
