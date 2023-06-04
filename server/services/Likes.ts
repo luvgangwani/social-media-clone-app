@@ -18,6 +18,19 @@ class LikesService {
         });
     }
 
+    getLikesByUsername(username: string) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select post_id from likes where username=?`,
+                [username],
+                (error, results, _fields) => {
+                    if (error) reject(error);
+                    if (results) resolve(results);
+                }
+            );
+        });
+    }
+
     delete(likes: Likes) {
         return new Promise((resolve, reject) => {
             pool.query(

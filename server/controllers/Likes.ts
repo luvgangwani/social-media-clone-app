@@ -1,5 +1,5 @@
 import LikesService from "../services/Likes";
-import { Likes } from "../types";
+import { Likes, LikesResponse } from "../types";
 
 class LikesController {
 
@@ -10,6 +10,19 @@ class LikesController {
         .likesServices
         .create(likes)
         .then(data => data)
+        .catch(error => {
+            throw new Error(error);
+        });
+    }
+
+    getLikesByUsername(username: string) {
+        return this
+        .likesServices
+        .getLikesByUsername(username)
+        .then(data => {
+            const postIds = (data as LikesResponse).map(({ post_id }) => post_id)
+            return postIds;
+        })
         .catch(error => {
             throw new Error(error);
         });

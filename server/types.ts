@@ -46,3 +46,7 @@ export type Profile = {
     lastName: string,
     username: string,
 }
+
+export type LikesResponse = Array<{
+    post_id: number
+}>
