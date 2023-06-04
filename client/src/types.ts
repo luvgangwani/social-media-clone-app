@@ -38,6 +38,7 @@ export type SignupState = {
 };
 
 export type PostCardProps = {
+    id: number,
     name: string,
     username: string,
     isFeed?: boolean,
@@ -93,4 +94,10 @@ export type ConnectionListProps = {
 
 export type Token = {
     exp: number,
+}
+
+export type LikedPostsState = {
+    liked: {
+        posts: number[]
+    }
 }

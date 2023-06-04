@@ -7,6 +7,7 @@ class Setting {
     public static POSTS_SERVICE_URL: string = `${this.API_BASE_URL}/posts`;
     public static PROFILE_SERVICE_URL: string = `${this.API_BASE_URL}/profiles`;
     public static CONNECTIONS_SERVICE_URL: string = `${this.API_BASE_URL}/connections`;
+    public static LIKES_SERVICE_URL: string = `${this.API_BASE_URL}/likes`;
 
     // Endpoints
     public static ENDPOINT_GET_USER_BY_USERNAME: string = `${this.USERS_SERVICE_URL}/getUserByUsername`;
@@ -19,6 +20,7 @@ class Setting {
     public static ENDPOINT_PROFILES: string = this.PROFILE_SERVICE_URL;
     public static ENDPOINT_CONNECTIONS: string = this.CONNECTIONS_SERVICE_URL;
     public static ENDPOINT_GET_CONNECTION_LIST_BY_USERNAME: string = `${this.CONNECTIONS_SERVICE_URL}/getConnectionListByUsername`;
+    public static ENDPOINT_LIKES: string = this.LIKES_SERVICE_URL;
 }
 
 export default Setting;

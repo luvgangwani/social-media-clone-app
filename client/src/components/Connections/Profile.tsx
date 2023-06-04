@@ -80,8 +80,9 @@ function ConnectionProfile() {
         {
           profile.posts.length > 0
           ?
-          profile.posts.map(({ body, name, username, likesCount, updated }, index) => (
+          profile.posts.map(({ id, body, name, username, likesCount, updated }, index) => (
             <PostCard
+              id={id}
               key={index}
               name={name}
               username={username}

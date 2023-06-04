@@ -60,6 +60,11 @@
     color: #2F5A60;
 }
 
+.like.liked {
+    background-color: #2F5A60;
+    color: #f1f0f0;
+}
+
 .comment {
     text-decoration: underline;
 }

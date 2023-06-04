@@ -172,6 +172,7 @@ function Posts() {
           posts.map(({ id, name, username, body, likesCount, updated }, index) => (
             <PostCard
               key={index}
+              id={id}
               name={name}
               username={username}
               body={body}

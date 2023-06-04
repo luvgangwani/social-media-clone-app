@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../redux/loader';
 import Setting from '../setting';
 import { setConnectionsList } from '../redux/connections';
+import { setLikedPosts } from '../redux/likes';
 
 function Layout() {
 
@@ -39,11 +40,35 @@ function Layout() {
     })
   }, [dispatch])
 
+  const fetchLikedPosts = useCallback(() => {
+    dispatch(setShowLoader(true));
+    fetch(Setting.ENDPOINT_LIKES, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+    })
+    .then(response => response.json())
+    .then(({ success, message, data }) => {
+        if (success) {
+            dispatch(setLikedPosts(data));
+        } else {
+            alert(message);
+        }
+    })
+    .catch(error => {
+        alert(error.message);
+    })
+    .finally(() => {
+        dispatch(setShowLoader(false));
+    })
+  }, [dispatch])
+
   useEffect(() => {
     if (localStorage.getItem('token')) {
         fetchConnectionsList();
+        fetchLikedPosts();
     }
-  }, [fetchConnectionsList])
+  }, [fetchConnectionsList, fetchLikedPosts])
   
 
   return (

@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from './PostCard.module.css';
 import { Link } from 'react-router-dom';
-import like from '../assets/like.svg';
-import { PostCardProps } from '../types';
+import { LikedPostsState, PostCardProps } from '../types';
+import { useSelector } from 'react-redux';
 
-function PostCard({ name, username, isFeed = false, body, likeCount, timestamp, onEdit, onDelete }: PostCardProps) {
+function PostCard({ id, name, username, isFeed = false, body, likeCount, timestamp, onEdit, onDelete }: PostCardProps) {
+
+  const postsLiked = useSelector((state: LikedPostsState) => state.liked.posts);
+
   return (
     <div className={styles.card}>
         <div className={styles.title}>
@@ -23,8 +26,12 @@ function PostCard({ name, username, isFeed = false, body, likeCount, timestamp, 
         <div className={styles.body}>{ body }</div>
         <div className={styles.footer}>
         <div className={styles.interactions}>
-            <button className={styles.like}>
-              <img src={like} alt='like' />
+            <button className={ `${styles.like} ${(postsLiked.includes(id)) ? styles.liked : '' }` }>
+            <svg width="15" height="20" viewBox="0 0 31 33" fill={(postsLiked.includes(id)) ? "#f1f0f0" : "#2F5A60"} xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.7917 2.51089L29.0782 17.5713L15.5 33L2.21351 17.9396L15.7917 2.51089Z"/>
+              <path d="M19.345 10.9091C19.345 16.934 15.0144 21.8182 9.67248 21.8182C4.33052 21.8182 0 16.934 0 10.9091C0 4.88417 4.33052 0 9.67248 0C15.0144 0 19.345 4.88417 19.345 10.9091Z"/>
+              <path d="M31 10.9091C31 16.934 26.6695 21.8182 21.3275 21.8182C15.9856 21.8182 11.655 16.934 11.655 10.9091C11.655 4.88417 15.9856 0 21.3275 0C26.6695 0 31 4.88417 31 10.9091Z"/>
+            </svg>
               { likeCount }
             </button>
             <span className={styles.comment}>Comment</span>
