@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
 import Setting from '../../setting';
 import { useSelector } from 'react-redux';
-import { ConnectionsListState } from '../../types';
+import { ConnectionsListState, LikedPostsState } from '../../types';
 import { PostsState } from '../../types';
 import PostCard from '../../template/PostCard';
 import styles from './index.module.css';
@@ -16,6 +16,7 @@ function Feed() {
   const dispatch = useDispatch();
 
   const connectionList = useSelector((state: ConnectionsListState) => state.connections.list)
+  const postsLiked = useSelector((state: LikedPostsState) => state.liked.posts);
 
   useEffect(() => {
     if (connectionList.length > 0) {
@@ -42,7 +43,7 @@ function Feed() {
         dispatch(setShowLoader(false));
       });
     }
-  }, [connectionList, dispatch])
+  }, [connectionList, dispatch, postsLiked])
   
   return (
     <div className={styles.container}>

@@ -6,6 +6,8 @@ import Setting from '../../setting';
 import { setShowLoader } from '../../redux/loader';
 import PostCard from '../../template/PostCard';
 import withAuth from '../../hoc/withAuth';
+import { LikedPostsState } from '../../types';
+import { useSelector } from 'react-redux';
 
 function ConnectionProfile() {
 
@@ -17,6 +19,8 @@ function ConnectionProfile() {
 
   const params = useParams();
   const dispatch = useDispatch();
+
+  const postsLiked = useSelector((state: LikedPostsState) => state.liked.posts);
 
   useEffect(() => {
     dispatch(setShowLoader(true));
@@ -69,7 +73,7 @@ function ConnectionProfile() {
     .finally(() => {
       dispatch(setShowLoader(false))
     });
-  }, [dispatch, params.username]);
+  }, [dispatch, params.username, postsLiked]);
   
   return (
     <div className={styles.container}>

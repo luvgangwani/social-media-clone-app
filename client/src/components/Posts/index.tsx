@@ -2,12 +2,13 @@ import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 
 import withAuth from '../../hoc/withAuth';
 import styles from './index.module.css';
 import PostCard from '../../template/PostCard';
-import { PostFormState, PostsState } from '../../types';
+import { LikedPostsState, PostFormState, PostsState } from '../../types';
 import { useDispatch } from 'react-redux';
 import { setShowLoader } from '../../redux/loader';
 import Setting from '../../setting';
 import { setShowModal } from '../../redux/modal';
 import Modal from '../../template/Modal';
+import { useSelector } from 'react-redux';
 
 function Posts() {
 
@@ -22,6 +23,8 @@ function Posts() {
   });
 
   const dispatch = useDispatch();
+
+  const postsLiked = useSelector((state: LikedPostsState) => state.liked.posts);
 
   const fetchPosts = useCallback(() => {
     dispatch(setShowLoader(true));
@@ -48,7 +51,7 @@ function Posts() {
 
   useEffect(() => {
     fetchPosts()
-  }, [fetchPosts])
+  }, [fetchPosts, postsLiked])
 
   useEffect(() => {
     if (refreshPosts) {
