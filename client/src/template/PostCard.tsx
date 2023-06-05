@@ -61,7 +61,7 @@ function PostCard({ id, name, username, isFeed = false, body, likeCount, timesta
     .then(({ success, message }) => {
       if (success) {
         dispatch(setLikedPosts([
-          postsLiked.filter(pId => pId !== id)
+          ...postsLiked.filter(pId => pId !== id)
         ]));
         alert(message)
       }
